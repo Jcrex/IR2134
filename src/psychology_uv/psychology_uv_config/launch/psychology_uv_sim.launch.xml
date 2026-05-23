@@ -1,0 +1,35 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="use_sim_time" default="false" />
+
+  <!-- Common launch -->
+  <include file="$(find-pkg-share psychology_uv_config)/common.launch.xml">
+    <arg name="use_sim_time" value="$(var use_sim_time)" />
+    <arg
+            name="viz_config_file"
+            value="$(find-pkg-share psychology_uv_config)/include/psychology_uv_config/psychology_uv.rviz"
+        />
+    <arg
+            name="config_file"
+            value="$(find-pkg-share psychology_uv_maps)/maps/psychology/psychology.building.yaml"
+        />
+    <!-- <arg name="dashboard_config_file" value="$(find-pkg-share config_dashboard_resources)/test1/dashboard_config.json" /> -->
+  </include>
+
+  <!-- Tiny robot fleet adapter -->
+  <group>
+    <include
+            file="$(find-pkg-share psychology_uv_fleet_adapter)/launch/fleet_adapter.launch.xml"
+        >
+      <arg name="use_sim_time" value="$(var use_sim_time)" />
+      <arg
+                name="nav_graph_file"
+                value="$(find-pkg-share psychology_uv_maps)/maps/psychology/nav_graphs/0.yaml"
+            />
+      <arg
+                name="config_file"
+                value="$(find-pkg-share psychology_uv_config)/config/psychology_uv_sim/tinyRobot_config.yaml"
+            />
+    </include>
+  </group>
+</launch>

@@ -1,0 +1,263 @@
+<?xml version='1.0' encoding='utf-8'?>
+<sdf version="1.7">
+  <model name="library_L0">
+    <static>true</static>
+    <link name="floor_1">
+      <visual name="visual">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/floor_1.obj</uri>
+          </mesh>
+        </geometry>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://library_L0/meshes/blue_linoleum.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://library_L0/meshes/</uri>
+            <name>floor_1_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/floor_1.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+    </link>
+    <link name="wall_1">
+      <visual name="wall_1">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_1.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.0</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://library_L0/meshes/default.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://library_L0/meshes/</uri>
+            <name>wall_1_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_1.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>7.027715187092302 -233.76655723102118 0 0 0 0</pose>
+    </link>
+    <link name="wall_2">
+      <visual name="wall_2">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_2.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.0</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://library_L0/meshes/default.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://library_L0/meshes/</uri>
+            <name>wall_2_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_2.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>65.19363701449794 -221.13476821192052 0 0 0 0</pose>
+    </link>
+    <link name="wall_3">
+      <visual name="wall_3">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_3.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.0</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://library_L0/meshes/default.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://library_L0/meshes/</uri>
+            <name>wall_3_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_3.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>28.732806380418186 -214.80963723238418 0 0 0 0</pose>
+    </link>
+    <link name="wall_4">
+      <visual name="wall_4">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_4.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.0</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://library_L0/meshes/default.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://library_L0/meshes/</uri>
+            <name>wall_4_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_4.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>65.19353056970508 -221.13487465671335 0 0 0 0</pose>
+    </link>
+    <link name="wall_5">
+      <visual name="wall_5">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_5.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.0</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://library_L0/meshes/default.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://library_L0/meshes/</uri>
+            <name>wall_5_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_5.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>36.207934314067224 -123.59421352914022 0 0 0 0</pose>
+    </link>
+    <link name="wall_6">
+      <visual name="wall_6">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_6.obj</uri>
+          </mesh>
+        </geometry>
+        <transparency>0.0</transparency>
+        <material>
+          <diffuse>1.0 1.0 1.0</diffuse>
+          <specular>0.1 0.1 0.1</specular>
+          <pbr>
+            <metal>
+              <metalness>0.0</metalness>
+              <albedo_map>model://library_L0/meshes/default.png</albedo_map>
+            </metal>
+          </pbr>
+          <script>
+            <uri>model://library_L0/meshes/</uri>
+            <name>wall_6_Diffuse</name>
+          </script>
+        </material>
+      </visual>
+      <collision name="collision">
+        <geometry>
+          <mesh>
+            <uri>model://library_L0/meshes/wall_6.obj</uri>
+          </mesh>
+        </geometry>
+        <surface>
+          <contact>
+            <collide_bitmask>0x01</collide_bitmask>
+          </contact>
+        </surface>
+      </collision>
+      <pose>58.656507425087824 -52.025110616795125 0 0 0 0</pose>
+    </link>
+  </model>
+</sdf>
