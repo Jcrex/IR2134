@@ -3,3 +3,14 @@ install/
 log/
 __pycache__/
 *.pyc
+
+# Backups de traffic-editor
+*.bak
+*.bak_*
+
+# Dependencia externa clonada (tiene su propio .git)
+src/rmf_simulation/
+
+# Artefactos de runtime de RMF
+.rmf_schedule_node.yaml
+**/.rmf_schedule_node.yaml
