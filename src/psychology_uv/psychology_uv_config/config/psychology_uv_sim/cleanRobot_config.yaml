@@ -1,0 +1,90 @@
+# FLEET CONFIG
+# =================================================================
+
+# RMF Fleet parameters
+rmf_fleet:
+  name: "cleanRobot"
+  limits:
+    linear: [0.7, 0.75] # velocity, acceleration
+    angular: [0.6, 2.0] # velocity, acceleration
+  profile: # Robot profile is modelled as a circle
+    footprint: 0.3 # radius in m
+    vicinity: 0.5 # radius in m
+  reversible: True # whether robots in this fleet can reverse
+  battery_system:
+    voltage: 24.0 # V
+    capacity: 40.0 # Ahr
+    charging_current: 8.8 # A
+  mechanical_system:
+    mass: 70.0 # kg
+    moment_of_inertia: 40.0 # kgm^2
+    friction_coefficient: 0.22
+  ambient_system:
+    power: 100.0 # W
+  tool_system:
+    power: 0.0 # W
+  recharge_threshold: 0.10 # Battery level below which robots in this fleet will not operate
+  recharge_soc: 1.0 # Battery level to which robots in this fleet should be charged up to during recharging tasks
+  publish_fleet_state: 10.0 # Publish frequency for fleet state, ensure that it is same as robot_state_update_frequency
+  account_for_battery_drain: True
+  task_capabilities: # Specify the types of RMF Tasks that robots in this fleet are capable of performing
+    loop: True
+    delivery: False
+  actions: ["clean"]   # declara la acción performable "clean" (esto es lo que faltaba)
+  finishing_request: "park" # [park, charge, nothing]
+  robots:
+    cleanRobot1:
+      charger: "cleanRobot_charger"
+      start:
+        map_name: "planta_2"
+        waypoint: "cleanRobot_charger"
+        orientation: 0.0 # radians
+    cleanRobot2:
+      charger: "cleanRobot_charger2"
+      start:
+        map_name: "planta_2"
+        waypoint: "cleanRobot_charger2"
+        orientation: 0.0 # radians
+
+fleet_manager:
+  ip: "127.0.0.1"
+  port: 22013
+  user: "some_user"
+  password: "some_password"
+  robot_state_update_frequency: 10.0
+  # Cada zona define el recorrido [x, y, yaw] que el robot hace mientras limpia.
+  # Son lazos pequeños (~1.5 m) alrededor del waypoint; AJUSTA las coords al tamaño real de cada sala.
+  action_paths:
+    clean:
+      sala-grabacion:
+        map_name: "planta_1"
+        path: [ [90.157, -63.690, 0.0],
+                [91.657, -63.690, 1.57],
+                [91.657, -62.190, 3.14],
+                [90.157, -62.190, -1.57],
+                [90.157, -63.690, 0.0] ]
+        finish_waypoint: "sala-grabacion"
+      aula-este:
+        map_name: "planta_1"
+        path: [ [158.316, -57.539, 0.0],
+                [159.816, -57.539, 1.57],
+                [159.816, -56.039, 3.14],
+                [158.316, -56.039, -1.57],
+                [158.316, -57.539, 0.0] ]
+        finish_waypoint: "aula-este"
+      LIP1:
+        map_name: "planta_1"
+        path: [ [98.314, -96.959, 0.0],
+                [99.814, -96.959, 1.57],
+                [99.814, -95.459, 3.14],
+                [98.314, -95.459, -1.57],
+                [98.314, -96.959, 0.0] ]
+        finish_waypoint: "LIP1"
+      AUR:
+        map_name: "planta_1"
+        path: [ [147.681, -86.416, 0.0],
+                [149.181, -86.416, 1.57],
+                [149.181, -84.916, 3.14],
+                [147.681, -84.916, -1.57],
+                [147.681, -86.416, 0.0] ]
+        finish_waypoint: "AUR"
