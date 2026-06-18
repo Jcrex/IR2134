@@ -32,4 +32,38 @@
             />
     </include>
   </group>
+
+  <!-- Delivery robot fleet adapter -->
+  <group>
+    <include
+            file="$(find-pkg-share psychology_uv_fleet_adapter)/launch/fleet_adapter.launch.xml"
+        >
+      <arg name="use_sim_time" value="$(var use_sim_time)" />
+      <arg
+                name="nav_graph_file"
+                value="$(find-pkg-share psychology_uv_maps)/maps/psychology/nav_graphs/0.yaml"
+            />
+      <arg
+                name="config_file"
+                value="$(find-pkg-share psychology_uv_config)/config/psychology_uv_sim/deliveryRobot_config.yaml"
+            />
+    </include>
+  </group>
+
+  <!-- Clean robot fleet adapter -->
+  <group>
+    <include
+            file="$(find-pkg-share psychology_uv_fleet_adapter)/launch/fleet_adapter.launch.xml"
+        >
+      <arg name="use_sim_time" value="$(var use_sim_time)" />
+      <arg
+                name="nav_graph_file"
+                value="$(find-pkg-share psychology_uv_maps)/maps/psychology/nav_graphs/0.yaml"
+            />
+      <arg
+                name="config_file"
+                value="$(find-pkg-share psychology_uv_config)/config/psychology_uv_sim/cleanRobot_config.yaml"
+            />
+    </include>
+  </group>
 </launch>
