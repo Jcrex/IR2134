@@ -224,6 +224,7 @@
       <plugin filename="toggle_charging" name="toggle_charging" />
       <plugin name="toggle_floors" filename="toggle_floors">
         <floor name="baixa" model_name="industrial_baixa">
+          <model name="coke_ingestor" />
           <model name="puerta1" />
           <model name="puerta7" />
           <model name="puerta6" />
@@ -243,6 +244,7 @@
           <model name="ShaftDoor_lift1_baixa_lift1" />
         </floor>
         <floor name="soterrani_1" model_name="industrial_soterrani_1">
+          <model name="coke_dispenser" />
           <model name="prueta-s1" />
           <model name="prueta-s2" />
           <model name="prueta-s4" />
@@ -273,6 +275,12 @@
       </attenuation>
       <direction>-0.5 0.1 -0.9</direction>
     </light>
+    <include>
+      <name>coke_ingestor</name>
+      <uri>model://TeleportIngestor</uri>
+      <pose>39.09331172532708 -35.782669939274605 0.0 0 0 1.5708</pose>
+      <static>True</static>
+    </include>
     <include>
       <name>cleanRobot2</name>
       <uri>model://CleanerBotA</uri>
@@ -1796,6 +1804,12 @@
       <name>industrial_baixa</name>
       <uri>model://industrial_baixa</uri>
       <pose>0 0 0.0 0 0 0</pose>
+    </include>
+    <include>
+      <name>coke_dispenser</name>
+      <uri>model://TeleportDispenser</uri>
+      <pose>39.00895170646385 -15.334261351971769 -4.0 0 0 1.5712492306063044</pose>
+      <static>True</static>
     </include>
     <include>
       <name>cleanRobot1</name>
