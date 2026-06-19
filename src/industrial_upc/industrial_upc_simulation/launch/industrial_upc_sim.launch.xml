@@ -7,7 +7,7 @@
 
   <!-- Common launch -->
   <include
-        file="$(find-pkg-share industrial_upc_config)/industrial_upc_sim.launch.xml"
+        file="$(find-pkg-share industrial_upc_config)/launch/industrial_upc_sim.launch.xml"
     >
     <arg name="use_sim_time" value="$(var use_sim_time)" />
     <arg name="failover_mode" value="$(var failover_mode)" />
