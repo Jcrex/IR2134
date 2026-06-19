@@ -14,3 +14,7 @@ src/rmf_simulation/
 # Artefactos de runtime de RMF
 .rmf_schedule_node.yaml
 **/.rmf_schedule_node.yaml
+
+# Guía local de Claude Code y specs de diseño (no deben versionarse)
+CLAUDE.md
+docs/
