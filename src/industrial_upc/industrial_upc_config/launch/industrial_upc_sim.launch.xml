@@ -1,0 +1,69 @@
+<?xml version="1.0" ?>
+<launch>
+  <arg name="use_sim_time" default="false" />
+
+  <!-- Common launch -->
+  <include file="$(find-pkg-share industrial_upc_config)/common.launch.xml">
+    <arg name="use_sim_time" value="$(var use_sim_time)" />
+    <arg
+            name="viz_config_file"
+            value="$(find-pkg-share industrial_upc_config)/include/industrial_upc_config/industrial_upc.rviz"
+        />
+    <arg
+            name="config_file"
+            value="$(find-pkg-share industrial_upc_maps)/maps/industrial/industrial.building.yaml"
+        />
+    <!-- <arg name="dashboard_config_file" value="$(find-pkg-share config_dashboard_resources)/test1/dashboard_config.json" /> -->
+  </include>
+
+  <!-- Tiny robot fleet adapter -->
+  <group>
+    <include
+            file="$(find-pkg-share industrial_upc_fleet_adapter)/launch/fleet_adapter.launch.xml"
+        >
+      <arg name="use_sim_time" value="$(var use_sim_time)" />
+      <arg
+                name="nav_graph_file"
+                value="$(find-pkg-share industrial_upc_maps)/maps/industrial/nav_graphs/0.yaml"
+            />
+      <arg
+                name="config_file"
+                value="$(find-pkg-share industrial_upc_config)/config/industrial_upc_sim/tinyRobot_config.yaml"
+            />
+    </include>
+  </group>
+
+  <!-- Delivery robot fleet adapter -->
+  <group>
+    <include
+            file="$(find-pkg-share industrial_upc_fleet_adapter)/launch/fleet_adapter.launch.xml"
+        >
+      <arg name="use_sim_time" value="$(var use_sim_time)" />
+      <arg
+                name="nav_graph_file"
+                value="$(find-pkg-share industrial_upc_maps)/maps/industrial/nav_graphs/0.yaml"
+            />
+      <arg
+                name="config_file"
+                value="$(find-pkg-share industrial_upc_config)/config/industrial_upc_sim/deliveryRobot_config.yaml"
+            />
+    </include>
+  </group>
+
+  <!-- Clean robot fleet adapter -->
+  <group>
+    <include
+            file="$(find-pkg-share industrial_upc_fleet_adapter)/launch/fleet_adapter.launch.xml"
+        >
+      <arg name="use_sim_time" value="$(var use_sim_time)" />
+      <arg
+                name="nav_graph_file"
+                value="$(find-pkg-share industrial_upc_maps)/maps/industrial/nav_graphs/0.yaml"
+            />
+      <arg
+                name="config_file"
+                value="$(find-pkg-share industrial_upc_config)/config/industrial_upc_sim/cleanRobot_config.yaml"
+            />
+    </include>
+  </group>
+</launch>
