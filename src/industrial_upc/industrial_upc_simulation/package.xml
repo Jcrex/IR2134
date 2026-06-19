@@ -11,7 +11,7 @@
 
   <exec_depend>industrial_upc_config</exec_depend>
   <exec_depend>industrial_upc_maps</exec_depend>
-  <exec_depend>psychology_uv_assets</exec_depend>
+  <exec_depend>industrial_upc_assets</exec_depend>
   <exec_depend>ros_gz_sim</exec_depend>
   <exec_depend>ros_gz_bridge</exec_depend>
   <exec_depend>launch_xml</exec_depend>

@@ -11,7 +11,7 @@
 
   <exec_depend>industrial_upc_maps</exec_depend>
   <exec_depend>industrial_upc_fleet_adapter</exec_depend>
-  <exec_depend>psychology_uv_assets</exec_depend>
+  <exec_depend>industrial_upc_assets</exec_depend>
   <exec_depend>rmf_traffic_ros2</exec_depend>
   <exec_depend>rmf_task_ros2</exec_depend>
   <exec_depend>rmf_fleet_adapter</exec_depend>
