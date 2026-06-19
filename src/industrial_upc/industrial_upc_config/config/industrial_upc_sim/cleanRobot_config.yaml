@@ -43,16 +43,16 @@ rmf_fleet:
   finishing_request: "park" # [park, charge, nothing]
   robots:
     cleanRobot1:
-      charger: "cleanRobot_charger1"   # AJUSTAR tras el mapa
+      charger: "cleanRobot_charger1"
       start:
-        map_name: "baixa"             # AJUSTAR tras el mapa
-        waypoint: "cleanRobot_charger1" # AJUSTAR tras el mapa
+        map_name: "soterrani_1"
+        waypoint: "cleanRobot_charger1"
         orientation: 0.0 # radians
     cleanRobot2:
-      charger: "cleanRobot_charger2"  # AJUSTAR tras el mapa
+      charger: "cleanRobot_charger2"
       start:
-        map_name: "baixa"             # AJUSTAR tras el mapa
-        waypoint: "cleanRobot_charger2" # AJUSTAR tras el mapa
+        map_name: "baixa"
+        waypoint: "cleanRobot_charger2"
         orientation: 0.0 # radians
 
 fleet_manager:
@@ -61,15 +61,25 @@ fleet_manager:
   user: "some_user"
   password: "some_password"
   robot_state_update_frequency: 10.0
-  # AJUSTAR tras el mapa: cada clave debe ser un WAYPOINT real del nav graph y las
-  # coordenadas `path` deben corresponder al nivel `map_name`. Ejemplo (placeholder):
+  # Zonas de limpieza: la clave es un WAYPOINT real del nav graph y el `path` es un
+  # lazo (~1.5 m) alrededor de su posición, en coordenadas del nivel `map_name`.
+  # En baixa hay waypoints local-1..local-7; soterrani_1 aún no tiene waypoints de
+  # limpieza nombrados (solo chargers), añádelos en traffic-editor si quieres limpiar ahí.
   action_paths:
     clean:
-      zona_ejemplo:                   # AJUSTAR: nombre de waypoint real
-        map_name: "baixa"            # AJUSTAR: nivel real
-        path: [ [0.0, 0.0, 0.0],
-                [1.5, 0.0, 1.57],
-                [1.5, 1.5, 3.14],
-                [0.0, 1.5, -1.57],
-                [0.0, 0.0, 0.0] ]
-        finish_waypoint: "zona_ejemplo" # AJUSTAR
+      local-1:
+        map_name: "baixa"
+        path: [ [26.081, -16.387, 0.0],
+                [27.581, -16.387, 1.57],
+                [27.581, -14.887, 3.14],
+                [26.081, -14.887, -1.57],
+                [26.081, -16.387, 0.0] ]
+        finish_waypoint: "local-1"
+      local-2:
+        map_name: "baixa"
+        path: [ [35.718, -21.611, 0.0],
+                [37.218, -21.611, 1.57],
+                [37.218, -20.111, 3.14],
+                [35.718, -20.111, -1.57],
+                [35.718, -21.611, 0.0] ]
+        finish_waypoint: "local-2"

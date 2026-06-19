@@ -42,16 +42,16 @@ rmf_fleet:
   finishing_request: "park" # [park, charge, nothing]
   robots:
     deliveryRobot1:
-      charger: "deliveryRobot_charger1" # AJUSTAR tras el mapa
+      charger: "deliveryRobot_charger1"
       start:
-        map_name: "baixa"               # AJUSTAR tras el mapa
-        waypoint: "deliveryRobot_charger1" # AJUSTAR tras el mapa
+        map_name: "baixa"
+        waypoint: "deliveryRobot_charger1"
         orientation: 0.0 # radians
     deliveryRobot2:
-      charger: "deliveryRobot_charger2" # AJUSTAR tras el mapa
+      charger: "deliveryRobot_charger2"
       start:
-        map_name: "baixa"               # AJUSTAR tras el mapa
-        waypoint: "deliveryRobot_charger2" # AJUSTAR tras el mapa
+        map_name: "soterrani_1"
+        waypoint: "deliveryRobot_charger2"
         orientation: 0.0 # radians
 
 fleet_manager:

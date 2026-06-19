@@ -27,13 +27,19 @@ ejercicio 2.
 
 ## Estado actual
 
-- ✅ Paquetes ROS preparados (maps, config, simulation, fleet_adapter) y planos colocados.
-- ✅ Planta baixa (`baixa`) dibujada en traffic-editor; world + nav_graphs generados y copiados.
-- ✅ Flota `tinyRobot` (×2) operativa: ambos en `/fleet_states` y patrulla validada.
-- ✅ Flotas `deliveryRobot` y `cleanRobot` desactivadas en el launch (sin robots en planta baixa, ver 3.2).
-- ⏳ Pendiente: nombrar waypoints destino en traffic-editor (ahora solo los 2 chargers tienen nombre).
-- ⏳ Pendiente: dar nombre válido a las puertas `null`/`l` y regenerar (ver 3.4 prevención).
-- ⏳ Pendiente: resto de plantas (`soterrani_1`, `soterrani_2`) + ascensor, y flotas delivery/clean.
+- ✅ Paquetes ROS independientes (assets, config, maps, simulation, fleet_adapter).
+- ✅ Dos plantas: `baixa` (elev 0) y `soterrani_1` (elev -4), unidas por `lift1` (conectado en el grafo: `grep -c 'lift: lift1' = 2`).
+- ✅ 3 flotas activas y configuradas: `tinyRobot` (×2, baixa), `deliveryRobot` (deliveryRobot1 baixa, deliveryRobot2 soterrani_1), `cleanRobot` (cleanRobot1 soterrani_1, cleanRobot2 baixa).
+- ✅ Waypoints nombrados en baixa: `local-1..local-7`; zonas de limpieza `local-1`/`local-2` con coordenadas reales.
+- ✅ Corregido el nombre del robot `CleanerBot2` → `cleanRobot2` (building.yaml y world); ver nota abajo sobre el nav graph.
+- ⏳ Pendiente (opcional): waypoints de patrulla/limpieza nombrados en `soterrani_1` (ahora solo tiene chargers).
+- ⏳ Pendiente (opcional): planta `soterrani_2`.
+
+> Nota: `nav_graphs/` e `industrial_world/` se generaron como root en el contenedor, por lo que el
+> fix de `CleanerBot2`→`cleanRobot2` no pudo aplicarse al nav graph desde el host. Es inofensivo en
+> runtime (la flota casa por el nombre del modelo en Gazebo, ya corregido en el `.world`), pero para
+> dejarlo limpio, dentro del contenedor: regenerar el nav o
+> `sed -i 's/CleanerBot2/cleanRobot2/g' nav_graphs/0.yaml` en `src` y en `Ejercicios/ejercicio2`.
 
 ## 1. Tras terminar el mapa en traffic-editor
 
