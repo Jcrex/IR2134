@@ -706,7 +706,7 @@ levels:
       - {name: ''}
     - - 32.642073426392244
       - -16.912779659579684
-      - {is_charger: true, is_parking_spot: true, name: cleanRobot_charger2, spawn_robot_name: CleanerBot2,
+      - {is_charger: true, is_parking_spot: true, name: cleanRobot_charger2, spawn_robot_name: cleanRobot2,
         spawn_robot_type: CleanerBotA}
     - - 32.642073426392244
       - -18.35723404956965
