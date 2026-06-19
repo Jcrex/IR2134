@@ -3,7 +3,9 @@
   <arg name="use_sim_time" default="false" />
 
   <!-- Common launch -->
-  <include file="$(find-pkg-share industrial_upc_config)/common.launch.xml">
+  <include
+        file="$(find-pkg-share industrial_upc_config)/launch/common.launch.xml"
+    >
     <arg name="use_sim_time" value="$(var use_sim_time)" />
     <arg
             name="viz_config_file"
@@ -34,6 +36,9 @@
   </group>
 
   <!-- Delivery robot fleet adapter -->
+  <!-- DESACTIVADA: el mapa actual (planta baixa) solo tiene tinyRobots.
+       Reactivar cuando el building.yaml incluya robots deliveryRobot1/2. -->
+  <!--
   <group>
     <include
             file="$(find-pkg-share industrial_upc_fleet_adapter)/launch/fleet_adapter.launch.xml"
@@ -49,8 +54,12 @@
             />
     </include>
   </group>
+  -->
 
   <!-- Clean robot fleet adapter -->
+  <!-- DESACTIVADA: el mapa actual (planta baixa) solo tiene tinyRobots.
+       Reactivar cuando el building.yaml incluya robots cleanRobot1/2. -->
+  <!--
   <group>
     <include
             file="$(find-pkg-share industrial_upc_fleet_adapter)/launch/fleet_adapter.launch.xml"
@@ -66,4 +75,5 @@
             />
     </include>
   </group>
+  -->
 </launch>

@@ -41,16 +41,16 @@ rmf_fleet:
   finishing_request: "park" # [park, charge, nothing]
   robots:
     tinyRobot1:
-      charger: "tinyRobot1_charger"   # AJUSTAR tras el mapa (waypoint is_charger real)
+      charger: "tinyRobot_charger1"
       start:
-        map_name: "baixa"             # AJUSTAR tras el mapa (nivel real)
-        waypoint: "tinyRobot1_charger" # AJUSTAR tras el mapa
+        map_name: "baixa"
+        waypoint: "tinyRobot_charger1"
         orientation: 0.0 # radians
     tinyRobot2:
-      charger: "tinyRobot2_charger"   # AJUSTAR tras el mapa
+      charger: "tinyRobot_charger2"
       start:
-        map_name: "baixa"             # AJUSTAR tras el mapa
-        waypoint: "tinyRobot2_charger" # AJUSTAR tras el mapa
+        map_name: "baixa"
+        waypoint: "tinyRobot_charger2"
         orientation: 0.0 # radians
 
 fleet_manager:
