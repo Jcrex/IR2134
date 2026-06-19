@@ -28,10 +28,12 @@ ejercicio 2.
 ## Estado actual
 
 - ✅ Paquetes ROS preparados (maps, config, simulation, fleet_adapter) y planos colocados.
-- ✅ Configs de las 3 flotas con placeholders comentados `# AJUSTAR tras el mapa`.
-- ⏳ `industrial.building.yaml` en edición en traffic-editor (de momento un nivel `L0` → `planta_baixa.png`).
-- ⏳ Pendiente generar `industrial.world` y `nav_graphs/` y copiarlos a `industrial_upc_maps`.
-- ⏳ Pendiente: ajustar en los configs `map_name`/`waypoint`/`action_paths` a los nombres reales del mapa.
+- ✅ Planta baixa (`baixa`) dibujada en traffic-editor; world + nav_graphs generados y copiados.
+- ✅ Flota `tinyRobot` (×2) operativa: ambos en `/fleet_states` y patrulla validada.
+- ✅ Flotas `deliveryRobot` y `cleanRobot` desactivadas en el launch (sin robots en planta baixa, ver 3.2).
+- ⏳ Pendiente: nombrar waypoints destino en traffic-editor (ahora solo los 2 chargers tienen nombre).
+- ⏳ Pendiente: dar nombre válido a las puertas `null`/`l` y regenerar (ver 3.4 prevención).
+- ⏳ Pendiente: resto de plantas (`soterrani_1`, `soterrani_2`) + ascensor, y flotas delivery/clean.
 
 ## 1. Tras terminar el mapa en traffic-editor
 
@@ -104,8 +106,52 @@ ros2 run rmf_demos_tasks dispatch_delivery -p <pickup_wp> -ph <dispenser> -d <dr
 ros2 topic echo /task_api_responses
 ```
 
-## 3. Recordatorios clave (ver detalle en el informe del ejercicio 1)
+## 3. Errores encontrados en el ejercicio 2
 
+### 3.1. `Cannot find a waypoint named [X_charger] ... We will not add the robot to the fleet`
+- **Síntoma:** los robots aparecen en Gazebo pero NO en `/fleet_states` y no se mueven. El adapter
+  repite "Cannot find a waypoint named [tinyRobot1_charger] in the navigation graph".
+- **Causa:** desajuste de nombres entre el `charger`/`waypoint` del config y el nombre real del
+  vértice en el nav graph. En el mapa los chargers se llamaban `tinyRobot_charger1`/`2` pero el
+  config pedía `tinyRobot1_charger`/`2` (número en otra posición). RMF busca el waypoint por nombre
+  EXACTO.
+- **Solución:** alinear ambos. O renombrar el vértice en traffic-editor, o (lo que hicimos) poner en
+  `tinyRobot_config.yaml` el nombre real: `charger`/`waypoint` = `tinyRobot_charger1` / `tinyRobot_charger2`.
+  Con `--symlink-install` basta relanzar; no hace falta recompilar.
+
+### 3.2. `Other error for <robot> in get_data: 'robot_name'` (en bucle)
+- **Causa:** el launch arranca flotas (deliveryRobot, cleanRobot) cuyos robots NO existen en el mapa.
+  El fleet manager no encuentra su estado y escupe el error sin parar.
+- **Solución:** comentar en `industrial_upc_sim.launch.xml` los `<group>` de las flotas sin robots.
+  Reactivarlas cuando el building.yaml incluya esos robots.
+
+### 3.3. `Connection to ws://localhost:8000/_internal failed` (en bucle)
+- **Causa:** se pasó `server_uri:="ws://localhost:8000/_internal"` pero no hay api server escuchando
+  (o se cayó, ver 3.4). La simulación funciona igual sin el dashboard web.
+- **Solución:** lanzar sin `server_uri`, o arrancar el api server / panel.
+
+### 3.4. ⭐ El api server cae al arrancar: `ValidationError ... for DoorState ... Application startup failed`
+- **Síntoma:** el api server, aunque "está lanzado de base", aborta el arranque tras
+  `loading states from database...` con un `pydantic ValidationError` sobre un `DoorState`
+  (p. ej. `puerta24`) al que le faltan `door_time`/`door_name`/`current_mode`. Como consecuencia,
+  los adapters no pueden conectar (ver 3.3) y aparecen errores `Event loop is closed`.
+- **Causa:** el api server persiste el estado de RMF en SQLite (`rmf_api_config.py` →
+  `sqlite://<dir>/run/db.sqlite3`). En el arranque carga y valida TODOS los estados guardados; un
+  registro viejo/incompleto (heredado de otro edificio, p. ej. `puerta24` del ejercicio 1) ya no
+  pasa la validación del esquema actual y aborta. Suele originarse por puertas mal nombradas.
+- **Solución:** resetear la BD (solo guarda historial de runtime; es seguro borrarla). En el contenedor:
+  ```bash
+  # parar el api server (Ctrl+C) y:
+  rm -f /opt/rmf_ws/run/db.sqlite3
+  rm -rf /opt/rmf_ws/run/cache
+  # relanzar; se recrea vacía
+  ```
+- **Prevención:** dar nombre único y válido a TODAS las puertas en traffic-editor (evitar puertas
+  `null` o de un carácter como `l`), regenerar y recopiar.
+
+## 4. Recordatorios clave (ver detalle en el informe del ejercicio 1)
+
+- El `charger`/`waypoint` del config debe coincidir EXACTO con el nombre del vértice en el nav graph (3.1).
 - Plantas apiladas → dar `elevation` positiva distinta a cada nivel en el building.yaml.
 - Ascensor entre plantas → vértice dentro del footprint del ascensor en CADA planta + carriles.
   Comprobar `grep -c 'lift: lift1' nav_graphs/0.yaml` → debe dar 2.
