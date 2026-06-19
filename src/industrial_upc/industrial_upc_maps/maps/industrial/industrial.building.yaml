@@ -1,7 +1,7 @@
 coordinate_system: reference_image
 crowd_sim:
   agent_groups:
-    - {agents_name: [cleanRobot2, tinyRobot1, deliveryRobot1, tinyRobot2, cleanRobot1, deliveryRobot2], agents_number: 6, group_id: 0, profile_selector: external_agent, state_selector: external_static, x: 0, y: 0}
+    - {agents_name: [CleanerBot2, tinyRobot1, deliveryRobot1, tinyRobot2, cleanRobot1, deliveryRobot2], agents_number: 6, group_id: 0, profile_selector: external_agent, state_selector: external_static, x: 0, y: 0}
   agent_profiles:
     - {ORCA_tau: 1, ORCA_tauObst: 0.40000000000000002, class: 1, max_accel: 0, max_angle_vel: 0, max_neighbors: 10, max_speed: 0, name: external_agent, neighbor_dist: 5, obstacle_set: 1, pref_speed: 0, r: 0.25}
   enable: 0
@@ -490,10 +490,10 @@ levels:
       - [2019.4480000000001, 977.41200000000003, 0, ""]
       - [1637.7149999999999, 1219.827, 0, ""]
       - [1999.6020000000001, 1221.3119999999999, 0, ""]
-      - [2010.288, 1521.2339999999999, 0, ""]
+      - [2010.288, 1521.2339999999999, 0, limpieza2, {is_cleaning_zone: [4, true]}]
       - [2010.288, 1696.008, 0, ""]
       - [1633.529, 1696.008, 0, ""]
-      - [1633.529, 1517.048, 0, ""]
+      - [1633.529, 1517.048, 0, delivery2, {dropoff_ingestor: [1, coke]}]
       - [1262.7080000000001, 1696.008, 0, ""]
       - [1262.7080000000001, 1531.759, 0, ""]
       - [1262.7080000000001, 1365.1189999999999, 0, ""]
@@ -1310,8 +1310,8 @@ levels:
       - [664.35199999999998, 1371.6980000000001, 0, cleanRobot_charger1, {is_charger: [4, true], is_parking_spot: [4, true], spawn_robot_name: [1, cleanRobot1], spawn_robot_type: [1, CleanerBotA]}]
       - [971.21699999999998, 1371.6980000000001, 0, ""]
       - [1522.615, 1371.6980000000001, 0, ""]
-      - [1522.615, 786.73699999999997, 0, ""]
-      - [1719.2, 786.73699999999997, 0, ""]
+      - [1522.615, 786.73699999999997, 0, limpieza1, {is_cleaning_zone: [4, true]}]
+      - [1719.2, 786.73699999999997, 0, delivery1, {pickup_dispenser: [1, coke]}]
       - [1719.2, 1377.2919999999999, 0, ""]
       - [1845.462, 1377.2919999999999, 0, ""]
       - [2129.951, 1377.2919999999999, 0, ""]

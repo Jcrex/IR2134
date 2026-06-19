@@ -63,23 +63,22 @@ fleet_manager:
   robot_state_update_frequency: 10.0
   # Zonas de limpieza: la clave es un WAYPOINT real del nav graph y el `path` es un
   # lazo (~1.5 m) alrededor de su posición, en coordenadas del nivel `map_name`.
-  # En baixa hay waypoints local-1..local-7; soterrani_1 aún no tiene waypoints de
-  # limpieza nombrados (solo chargers), añádelos en traffic-editor si quieres limpiar ahí.
+  # limpieza2 está en baixa y limpieza1 en soterrani_1 (vértices con is_cleaning_zone).
   action_paths:
     clean:
-      local-1:
+      limpieza2:
         map_name: "baixa"
-        path: [ [26.081, -16.387, 0.0],
-                [27.581, -16.387, 1.57],
-                [27.581, -14.887, 3.14],
-                [26.081, -14.887, -1.57],
-                [26.081, -16.387, 0.0] ]
-        finish_waypoint: "local-1"
-      local-2:
-        map_name: "baixa"
-        path: [ [35.718, -21.611, 0.0],
-                [37.218, -21.611, 1.57],
-                [37.218, -20.111, 3.14],
-                [35.718, -20.111, -1.57],
-                [35.718, -21.611, 0.0] ]
-        finish_waypoint: "local-2"
+        path: [ [47.353, -35.833, 0.0],
+                [48.853, -35.833, 1.57],
+                [48.853, -34.333, 3.14],
+                [47.353, -34.333, -1.57],
+                [47.353, -35.833, 0.0] ]
+        finish_waypoint: "limpieza2"
+      limpieza1:
+        map_name: "soterrani_1"
+        path: [ [34.843, -15.438, 0.0],
+                [36.343, -15.438, 1.57],
+                [36.343, -13.938, 3.14],
+                [34.843, -13.938, -1.57],
+                [34.843, -15.438, 0.0] ]
+        finish_waypoint: "limpieza1"
