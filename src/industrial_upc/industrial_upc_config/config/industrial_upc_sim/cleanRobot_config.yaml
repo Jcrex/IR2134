@@ -43,10 +43,10 @@ rmf_fleet:
   finishing_request: "park" # [park, charge, nothing]
   robots:
     cleanRobot1:
-      charger: "cleanRobot_charger"   # AJUSTAR tras el mapa
+      charger: "cleanRobot_charger1"   # AJUSTAR tras el mapa
       start:
         map_name: "baixa"             # AJUSTAR tras el mapa
-        waypoint: "cleanRobot_charger" # AJUSTAR tras el mapa
+        waypoint: "cleanRobot_charger1" # AJUSTAR tras el mapa
         orientation: 0.0 # radians
     cleanRobot2:
       charger: "cleanRobot_charger2"  # AJUSTAR tras el mapa
