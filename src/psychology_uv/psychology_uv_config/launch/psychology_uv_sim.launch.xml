@@ -3,7 +3,7 @@
   <arg name="use_sim_time" default="false" />
 
   <!-- Common launch -->
-  <include file="$(find-pkg-share psychology_uv_config)/common.launch.xml">
+  <include file="$(find-pkg-share psychology_uv_config)/launch/common.launch.xml">
     <arg name="use_sim_time" value="$(var use_sim_time)" />
     <arg
             name="viz_config_file"
